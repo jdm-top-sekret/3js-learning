@@ -17,4 +17,18 @@ const sizes = {
 
 // camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
+// move the camera backward before doing the render
+camera.position.z = 2
 scene.add(camera)
+
+// renderer
+const canvas = document.querySelector('.webgl');
+const renderer = new THREE.WebGLRenderer({  
+  canvas: canvas,
+})
+
+// resize renderer to update size of renderer
+renderer.setSize(sizes.width, sizes.height)
+
+// do first render
+renderer.render(scene, camera)
